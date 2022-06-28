@@ -8,7 +8,8 @@
 import jax
 import jax.numpy as jnp
 import matplotlib.pyplot as plt
-import blackjax.rmh as rmh
+import blackjax
+from blackjax import rmh
 from jax import random
 from functools import partial
 from jax.scipy.optimize import minimize

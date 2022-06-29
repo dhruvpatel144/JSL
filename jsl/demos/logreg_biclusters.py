@@ -60,7 +60,7 @@ def mcmc_logistic_posterior_sample(key, Phi, y, alpha=1.0, init_noise=1.0,
     key, key_init = random.split(key)
     w0 = random.multivariate_normal(key, jnp.zeros(ndims), jnp.eye(ndims) * init_noise)
     energy = partial(E_base, Phi=Phi, y=y, alpha=alpha)
-    initial_state = rmh.new_state(w0, energy)
+    initial_state = rmh.init(w0, energy)
 
     mcmc_kernel = rmh.kernel(energy, sigma=jnp.ones(ndims) * sigma_mcmc)
     mcmc_kernel = jax.jit(mcmc_kernel)
